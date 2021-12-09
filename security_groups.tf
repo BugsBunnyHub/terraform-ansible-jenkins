@@ -33,9 +33,9 @@ resource "aws_security_group" "jenkins-sg" {
   description = "Allow 8080 and 22"
   vpc_id      = aws_vpc.vpc_master.id
   ingress {
-    from_port       = 8080
+    from_port       = var.webserver-port
     protocol        = "tcp"
-    to_port         = 8080
+    to_port         = var.webserver-port
     security_groups = [aws_security_group.lb-sg.id]
     description     = "Allow 8080"
   }
